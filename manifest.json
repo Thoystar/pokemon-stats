@@ -1,0 +1,9 @@
+{
+  "name": "Pokémon Stats",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "author": "Thallys",
+  "description": "Barra de HP e bolinhas de SPD, DEF e SP.DEF nos tokens. Use: 3 pontinhos do token > Modificar Pokémon.",
+  "icon": "https://Thoystar.github.io/pokemon-stats/icon.svg",
+  "background_url": "https://Thoystar.github.io/pokemon-stats/background.html"
+}

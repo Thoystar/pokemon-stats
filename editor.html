@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modificar Pokémon</title>
+  <style>
+    :root {
+      --text: #fff; --text2: rgba(255,255,255,0.7); --primary: #bb99ff;
+      --primary-text: #000; --field: rgba(255,255,255,0.07);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: transparent; color: var(--text);
+      font-family: Roboto, system-ui, sans-serif; font-size: 13px; }
+    main { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+    h1 { font-size: 15px; margin: 0; font-weight: 600; }
+    #name { color: var(--text2); font-weight: 400; }
+    label { display: block; color: var(--text2); font-size: 11px; margin-bottom: 3px; }
+    textarea, input { width: 100%; background: var(--field); color: var(--text);
+      border: 1px solid transparent; border-radius: 6px; padding: 6px 8px; font: inherit; }
+    textarea { height: 70px; resize: none; }
+    textarea:focus, input:focus { outline: none; border-color: var(--primary); }
+    .row { display: grid; gap: 8px; }
+    .two { grid-template-columns: 1fr 1fr; }
+    .three { grid-template-columns: 1fr 1fr 1fr; }
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+    .muted { color: var(--text2); font-size: 11px; margin: 0; }
+    button { font: inherit; border: none; border-radius: 6px; padding: 7px 12px; cursor: pointer;
+      background: var(--field); color: var(--text); }
+    button.primary { background: var(--primary); color: var(--primary-text); font-weight: 600; }
+    button.danger { color: #ff8a8a; }
+    button:disabled { opacity: 0.5; cursor: default; }
+    .actions { display: flex; gap: 8px; justify-content: flex-end; }
+    .actions .spacer { flex: 1; }
+    .status { min-height: 16px; font-size: 11px; color: var(--text2); margin: 0; }
+    .status.error { color: #ff8a8a; }
+    hr { border: none; border-top: 1px solid var(--field); margin: 2px 0; width: 100%; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Modificar Pokémon <span id="name"></span></h1>
+
+    <div>
+      <label for="paste">Cole os status (HP, ATK, DEF, SP.ATK, SP.DEF, SPD — um por linha)</label>
+      <textarea id="paste" placeholder="40&#10;9&#10;12&#10;7&#10;12&#10;7"></textarea>
+    </div>
+    <div class="actions"><button id="apply">Preencher com o texto colado</button></div>
+
+    <hr />
+
+    <div class="row two">
+      <div><label for="hp">HP atual</label><input id="hp" inputmode="numeric" /></div>
+      <div><label for="hpMax">HP máximo</label><input id="hpMax" inputmode="numeric" /></div>
+    </div>
+    <div class="row three">
+      <div><label for="spd"><span class="dot" style="background:#4f7d2f"></span>SPD</label><input id="spd" inputmode="numeric" /></div>
+      <div><label for="def"><span class="dot" style="background:#3e63b3"></span>DEF</label><input id="def" inputmode="numeric" /></div>
+      <div><label for="spDef"><span class="dot" style="background:#b9781c"></span>SP.DEF</label><input id="spDef" inputmode="numeric" /></div>
+    </div>
+    <div class="row two">
+      <div><label for="atk">ATK</label><input id="atk" inputmode="numeric" /></div>
+      <div><label for="spAtk">SP.ATK</label><input id="spAtk" inputmode="numeric" /></div>
+    </div>
+    <p class="muted">ATK e SP.ATK ficam salvos, mas não aparecem no mapa.</p>
+
+    <p id="status" class="status"></p>
+
+    <div class="actions">
+      <button id="remove" class="danger" hidden>Remover</button>
+      <span class="spacer"></span>
+      <button id="cancel">Cancelar</button>
+      <button id="save" class="primary">Salvar</button>
+    </div>
+  </main>
+  <script type="module" src="editor.js"></script>
+</body>
+</html>
